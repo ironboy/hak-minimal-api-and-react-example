@@ -29,15 +29,6 @@ export default function startBackend(app) {
     fs.writeFileSync(path.join(distFolder, 'index.html'), message, 'utf-8')
   );
 
-  // Calculate db path
-  const dbPath = path.join(import.meta.dirname, '_db.sqlite3');
-
-  // Calculate db template path
-  const dbTemplatePath = path.join(import.meta.dirname, 'db_template', '_db.sqlite3');
-
-  // Copy the database from template folder to backend folder if it does not exist there
-  fs.existsSync(dbPath) || fs.copyFileSync(dbTemplatePath, dbPath);
-
   // Port to start the backend on
   let startPort = 5001;
 
@@ -46,7 +37,7 @@ export default function startBackend(app) {
 
     while (!await isFreePort(startPort)) { startPort++; }
     let backendProcess = spawn(
-      `dotnet run ${startPort} "${distFolder}" "${dbPath}"`,
+      `dotnet run ${startPort} "${distFolder}"`,
       { cwd: import.meta.dirname, stdio: 'inherit', shell: true }
     );
 
