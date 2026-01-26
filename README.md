@@ -1,6 +1,6 @@
 # Minimal API + React Fullstack
 
-Ett pedagogiskt fullstack-projekt för att lära sig .NET Minimal API med React.
+Ett fullstack-projekt-exempel för att lära sig .NET Minimal API med React. Använd gärna detta som utgångspunkt för ert projektarbete, men ta bort produkttabell ur databasen och "börja om" med egna komponenter ocxh stajling i frontend-kod.
 
 ## Teknikstack
 
