@@ -1,0 +1,9 @@
+{
+  "host": "5.189.183.23",
+  "port": 4567,
+  "username": "h25malmo-grupp10",
+  "password": "JQDYP55450",
+  "database": "h25malmo-grupp10",
+  "createTablesIfNotExist": true,
+  "seedDataIfEmpty": true
+}

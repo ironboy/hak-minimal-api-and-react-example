@@ -18,8 +18,8 @@ public static class RequestBodyParser
         return Obj(new
         {
             insertColumns = keys.Join(","),
-            insertValues = "$" + keys.Join(",$"),
-            update = keys.Filter(key => key != "id").Map(key => $"{key}=${key}").Join(","),
+            insertValues = "@" + keys.Join(",@"),
+            update = keys.Filter(key => key != "id").Map(key => $"{key}=@{key}").Join(","),
             body = cleaned
         });
     }

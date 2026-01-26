@@ -39,7 +39,7 @@ public static class RestApi
             HttpContext context, string table, string id
         ) =>
             RestResult.Parse(context, SQLQueryOne(
-                $"SELECT * FROM {table} WHERE id = $id",
+                $"SELECT * FROM {table} WHERE id = @id",
                 ReqBodyParse(table, Obj(new { id })).body,
                 context
             ))
@@ -53,7 +53,7 @@ public static class RestApi
             body.id = id;
             var parsed = ReqBodyParse(table, body);
             var update = parsed.update;
-            var sql = $"UPDATE {table} SET {update} WHERE id = $id";
+            var sql = $"UPDATE {table} SET {update} WHERE id = @id";
             var result = SQLQueryOne(sql, parsed.body, context);
             return RestResult.Parse(context, result);
         });
@@ -62,7 +62,7 @@ public static class RestApi
              HttpContext context, string table, string id
         ) =>
             RestResult.Parse(context, SQLQueryOne(
-                $"DELETE FROM {table} WHERE id = $id",
+                $"DELETE FROM {table} WHERE id = @id",
                 ReqBodyParse(table, Obj(new { id })).body,
                 context
             ))

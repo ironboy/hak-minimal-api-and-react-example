@@ -6,7 +6,7 @@ global using Microsoft.Extensions.FileProviders;
 global using System.Globalization;
 
 // Nuget packages
-global using Microsoft.Data.Sqlite;
+global using MySqlConnector;
 global using BCryptNet = BCrypt.Net.BCrypt;
 global using Dyndata;
 global using static Dyndata.Factory;

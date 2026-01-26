@@ -21,14 +21,14 @@ public static partial class Session
         // Get the session data from the database if it stored there
         // otherwise store it in the database
         var session = SQLQueryOne(
-          "SELECT * FROM sessions WHERE id = $id",
+          "SELECT * FROM sessions WHERE id = @id",
           new { id = cookieValue }
         );
         if (session == null)
         {
             SQLQuery(
-                "INSERT INTO sessions(id) VALUES($id)",
-                new { id = cookieValue }
+                "INSERT INTO sessions(id, data) VALUES(@id, @data)",
+                new { id = cookieValue, data = "{}" }
             );
             session = Obj(new { id = cookieValue, data = "{}" });
         }
@@ -62,8 +62,8 @@ public static partial class Session
         // Save to DB, with the data converted to JSON
         SQLQuery(
             @"UPDATE sessions 
-              SET modified = DATETIME('now'), data = $data
-              WHERE id = $id",
+              SET modified = NOW(), data = @data
+              WHERE id = @id",
             new
             {
                 session.id,

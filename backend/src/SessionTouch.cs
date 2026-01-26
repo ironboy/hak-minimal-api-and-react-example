@@ -5,8 +5,8 @@ public static partial class Session
     public static void Touch(HttpContext context)
     {
         SQLQuery(
-            @"UPDATE sessions SET modified = DATETIME('now')
-              WHERE id = $id",
+            @"UPDATE sessions SET modified = NOW()
+              WHERE id = @id",
             new { GetRawSession(context).id }
         );
     }
@@ -19,7 +19,7 @@ public static partial class Session
         {
             SQLQuery(
                 @$"DELETE FROM sessions WHERE 
-                   DATETIME('now', '-{hours} hours') > modified"
+                   DATE_SUB(NOW(), INTERVAL {hours} HOUR) > modified"
             );
             // Wait one minute per next check
             await Task.Delay(60000);
