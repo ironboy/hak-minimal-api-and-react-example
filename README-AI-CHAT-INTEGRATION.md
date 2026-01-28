@@ -1,7 +1,5 @@
 # AI Chat Integration Documentation
 
-This document describes the AI chat functionality that was integrated from the `ai-api-playground` folder into the main .NET backend and React frontend.
-
 ## Overview
 
 The AI chat functionality allows users to interact with an AI assistant (Devstral Small 2) through a chat interface. The backend proxies requests to the Nodehill AI API while prepending a customizable system prompt.
