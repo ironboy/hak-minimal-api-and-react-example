@@ -12,7 +12,6 @@ The AI chat functionality allows users to interact with an AI assistant (Devstra
 
 - **`backend/src/AiChatRoutes.cs`** - Main class handling AI chat routes
   - Implements POST `/api/chat` endpoint for chat completions
-  - Implements GET `/api/quota` endpoint for checking remaining token quota
   - Loads configuration from `db-config.json`
   - Loads system prompt from `system-prompt.md`
   - Proxies requests to `https://ai-api.nodehill.com`
@@ -40,7 +39,6 @@ The AI chat functionality allows users to interact with an AI assistant (Devstra
     - Message history display
     - Text input with auto-resize
     - Send button with loading state
-    - Quota display in header
     - Auto-scroll to latest message
     - Keyboard shortcut (Enter to send, Shift+Enter for new line)
 
@@ -142,19 +140,7 @@ Sends a message to the AI and receives a response.
         "content": "Hello! How can I help you today?"
       }
     }
-  ],
-  "remaining_quota": 4999500
-}
-```
-
-### GET `/api/quota`
-
-Checks the remaining token quota for the day.
-
-**Response:**
-```json
-{
-  "remaining": 4999500
+  ]
 }
 ```
 
