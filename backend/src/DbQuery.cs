@@ -110,6 +110,7 @@ public static class DbQuery
                 ('visitor,user, admin', 'GET', 'allow', '/api', 'false', 'Allow access to all routes not starting with /api'),
                 ('visitor', 'POST', 'allow', '/api/users', 'true', 'Allow registration as new user for visitors'),
                 ('visitor, user,admin', '*', 'allow', '/api/login', 'true', 'Allow access to all login routes'),
+                ('visitor,user,admin', 'POST', 'allow', '/api/chat', 'true', 'Allow all user roles to access AI chat'),
                 ('admin', '*', 'allow', '/api/users', 'true', 'Allow admins to see and edit users'),
                 ('admin', '*', 'allow', '/api/sessions', 'true', 'Allow admins to see and edit sessions'),
                 ('admin', '*', 'allow', '/api/acl', 'true', 'Allow admins to see and edit acl rules'),
