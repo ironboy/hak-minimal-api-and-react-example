@@ -215,5 +215,5 @@ rm -rf ai-api-playground
 ### Quota issues
 
 - Verify your access token is valid
-- Check if you've exceeded your daily quota (5M in / 1M out)
+- Check if you've exceeded your daily quota (1M in / 200K out)
 - Contact your instructor for a new token if needed
