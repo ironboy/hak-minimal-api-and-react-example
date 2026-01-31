@@ -48,8 +48,16 @@ public static partial class Session
     {
         var session = GetRawSession(context);
 
-        // data is now a string (not parsed by ObjFromReader anymore)
-        string dataStr = session.data;
+        // data can be either a string (from DB) or an Obj (newly created session)
+        var data = session.data;
+
+        // If it's an Obj (newly created session), it's empty
+        if (data is not string)
+        {
+            return null;
+        }
+
+        string dataStr = (string)data;
 
         if (string.IsNullOrEmpty(dataStr) || dataStr == "{}")
         {
