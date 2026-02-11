@@ -1,22 +1,35 @@
-import { useLocation } from 'react-router-dom';
-import Header from "./partials/Header";
-import Main from './partials/Main';
-import Footer from './partials/Footer';
-import BootstrapBreakpoints from './parts/BootstrapBreakpoints';
+import fetchJson from './utilities/fetchJson';
+import {useState, useEffect} from 'react';
 
-// turn off when not needed for debugging
-const showBootstrapBreakpoints = true;
+interface Animal {
+  id: number;
+  name: string;
+  species: string;
+}
 
 export default function App() {
 
-  // scroll to top when the route changes
-  useLocation();
-  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  const [animals, setAnimals] = useState<Animal[] | null>(null);
 
-  return <>
-    <Header />
-    <Main />
-    <Footer />
-    {showBootstrapBreakpoints ? <BootstrapBreakpoints /> : null}
-  </>;
+  // useEffect with an empty dependency array
+  // run when the component mounts!
+  useEffect(() => {
+   // Since you can't give useEffect an async function
+   // as argument we wrap our fetchJson, that needs await
+   // inside a self-exucting anonymous function
+   (async () => {
+     setAnimals(await fetchJson('/api/animals'));
+   })();
+  }, []);
+
+  // use short-circuiting to just return null as long
+  // as animals is null, but the whole jsx-structure once 
+  // animals has a truthy value
+  return animals && <>
+    <h1>Animals</h1>
+    {animals.map(({id, name, species}) => <article key={id}>
+      <h3>{name}</h3>
+      <p>{name} is a {species}.</p>
+    </article>)}
+  </>
 };
