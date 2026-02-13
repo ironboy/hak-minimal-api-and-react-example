@@ -8,3 +8,28 @@
 
 // Import fonts from Google Fonts
 @import url('https://fonts.googleapis.com/css2?family=Chewy&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+// Style the animal form
+form {
+  margin: 20px 0;
+
+  label {
+    display: block;
+    margin-bottom: 20px;
+
+    span {
+      display: inline-block;
+      min-width: 200px
+    }
+  }
+
+  button {
+    float: right;
+    margin-right: 20px;
+  }
+}
+
+button.showForm {
+  margin: 20px 0;
+}
