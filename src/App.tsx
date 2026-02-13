@@ -38,7 +38,7 @@ export default function App() {
 
   // use short circuiting to render nothing (null)
   // before have fetched our animals
-  return animals && <>
+  return animals && <section class="animal-list">
     <h1>Animals</h1>
     <button className="showForm" onClick={() => setShowAddAnimalForm(!showAddAnimalForm)}>
       {showAddAnimalForm ? 'Hide the form' : 'Show a form to add an animal'}
@@ -48,6 +48,6 @@ export default function App() {
       <h3>{name}</h3>
       <p>{name} is a {species}.</p>
     </article>)}
-  </>;
+  </section>;
 
 };

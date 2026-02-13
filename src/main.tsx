@@ -1,6 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import '../sass/index.scss';
+import './style.css';
 import App from './App';
 
 // Create the React root element
