@@ -1,4 +1,5 @@
 namespace WebApp;
+
 public static class Server
 {
     public static void Start()
@@ -10,9 +11,18 @@ public static class Server
         Acl.Start();
         ErrorHandler.Start();
         FileServer.Start();
+
         LoginRoutes.Start();
         AiChatRoutes.Start();
+
+        // Adding our SpecialRoutes
+        // Important: Do this before calling RestApi.start()!
+        // (More specific routes before more generic so that
+        //  the generic routes don't win)
+        SpecialRoutes.Start();
+
         RestApi.Start();
+
         Session.Start();
         // Start the server on port 3001
         var runUrl = "http://localhost:" + Globals.port;
